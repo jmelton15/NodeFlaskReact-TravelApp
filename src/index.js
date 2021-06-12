@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {v4 as uuid} from "uuid";
+
+const csrfToken = uuid();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <meta name="csrf_token" content={csrfToken}></meta>
+    <App csrfToken={csrfToken}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

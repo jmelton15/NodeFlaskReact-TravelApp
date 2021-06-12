@@ -1,0 +1,33 @@
+nav {
+    background-color: #21ADA8;
+}
+
+nav a {
+    text-decoration: none; /** takes away the underline of the link*/
+    margin-right:20px;
+    color:white;
+  }
+  
+  nav a.active {
+    font-weight: bold;
+    border-bottom: 2px solid;
+    box-sizing: border-box;
+  }
+  
+  nav a:hover {
+    text-decoration: none;
+   
+  }
+  
+a.navbar-brand {
+    margin-left:20px;
+}
+
+  nav a.active.navbar-brand {
+    border-bottom: none;
+  }
+  
+  nav a:not(.navbar-brand):hover {
+    font-weight: bold;
+  }
+  

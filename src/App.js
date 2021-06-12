@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { BrowserRouter } from "react-router-dom";
 import './App.css';
+import Navbar from "./Navbar"
+import Routes from "./Routes";
+import { useEffect, useState } from 'react';
 
-function App() {
+
+
+function App({csrfToken}) {
+  //TODO - ADD useContext() for Map component to use
+  
+  const [locations,setLocations] = useState([]);
+
+  const changeLocations = () => {
+    setLocations([{
+      name:"Location 1",
+      location: {
+        lat:42.9634,
+        lng:-85.6681
+      }
+    }])
+  } 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Navbar />
+        <Routes changeLocations={changeLocations} locations={locations} csrfToken={csrfToken}/>
+      </div>
+    </BrowserRouter>
+    
   );
 }
 

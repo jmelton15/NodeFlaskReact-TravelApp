@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-storage-and-safety">Data Storage And Safety</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#acknowledgements">Acknowledgements</a></li>
+  </ol>
+</details>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-### `npm start`
+### Capstone Project 2 - DTRI (Down To the Route of It) Refactored!
+### This Is The React.js Frontend Part of Capstone 2
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+About Frontend Project Will Go Here ....
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Future Plans
+ Need to Add Plans Here .....
 
-### `npm test`
+### Built With - Credits To The Following:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [React.js](https://reactjs.org/)
+* [HTML & CSS](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+* [AXIOS](https://github.com/axios/axios)
+* [Bootstrap 5](https://getbootstrap.com/)
+* [Reactstrap](https://reactstrap.github.io/)
+* [GOOGLE MAPS API](https://cloud.google.com/maps-platform/?utm_source=google&utm_medium=cpc&utm_campaign=FY18-Q2-global-demandgen-paidsearchonnetworkhouseads-cs-maps_contactsal_saf&utm_content=text-ad-none-none-DEV_c-CRE_274433407138-ADGP_Hybrid%20%7C%20AW%20SEM%20%7C%20BKWS%20~%20Google%20Maps%20API-KWID_43700033921822021-aud-599437145008%3Akwd-335425467-userloc_9017525&utm_term=KW_google%20maps%20api-ST_google%20maps%20api&gclid=Cj0KCQiA7NKBBhDBARIsAHbXCB5idACJ_A39gBkebSY75I0EkCuOraqAZKzGsgi3X4nirsE8FTh0j5caAmSUEALw_wcB)
+* [St Page Flip](https://nodlik.github.io/StPageFlip/)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<!-- GETTING STARTED -->
+## Getting Started
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+How To use App Goes Here.....
 
-### `npm run eject`
+## Reasons Behind API Choice and Site Ideas
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I opted to use Google Maps as my mapping API because of their nearby_places integration and depth. I have limited the number of trips users can make 
+in order to prevent making too many requests to Google since it can become a non-free entity at that point. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I added in the travel journal idea because my goal is for this app to be a social place for travelers and to maybe promote traveling around more! I would like to include a phone authentication service to allow a secure way to store travel documents and things 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<!-- DATA STORAGE AND SAFETY -->
+## Data Storage And Safety
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Everything that is stored to be used later is encrypted and secured while stored. This includes anything from password,email,travel forms, to all the locations from your trips. Decoding alogorithms are in places to bring back the stored data to be used
+on the client side when asked by that specific user. I may have went a little overboard with the encryption even, but it was fun to learn and good practice! However, I may get rid of the encrypting of the locations from trips as that takes time and may not be needed since registered users can see these anyways.
 
-## Learn More
+<!-- CONTACT -->
+## Contact
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Your Name - [John Melton]
+Email - [johnmelton.projects@gmail.com]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -11,3 +11,55 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+label {
+  font-weight:bolder;
+}
+
+.route-form-container {
+  background-color:#dab681 !important;
+  border-radius:15px !important;
+  box-shadow: 5px 5px 10px darkgrey;
+}
+
+@font-face {
+  font-family: "MoneraFont";
+  src:url('./fonts/monera_calm-webfont.woff') format("woff");
+}
+@font-face {
+  font-family:"TravelerFont";
+  src:url('./fonts/traveler-webfont.woff') format("woff");
+}
+@font-face {
+  font-family: "Wanderlust";
+  src:url('./fonts/WanderlustRegular.woff');
+}
+
+/* #HomePage-Header-Container {
+  background:white;
+  
+} */
+
+.DTRI-Header {
+  margin-top:10px !important;
+  font-family: "MoneraFont";
+  font-size: 6vw;
+  outline: 20px 10px black;
+  /* text-decoration: underline; */
+  /* font-weight:bolder; */
+}
+
+#HomePage-ButtonGroup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* background: #D2BD96; */
+  height: 300px;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  box-shadow: 5px 5px 30px 15px;
+}

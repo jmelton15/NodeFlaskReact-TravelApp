@@ -1,0 +1,13 @@
+.demoPage {
+    background-color: whitesmoke;
+}
+
+.cover-page {
+    background-image: url("./Images/CoverPage.png");
+    background-size:100% 100%;
+    background-repeat: no-repeat;
+}
+/* .stf__parent {
+    background-image: url("./Images/fernTable.jpg");
+    background-size: contain;
+} */
