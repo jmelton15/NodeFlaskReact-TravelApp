@@ -1,7 +1,5 @@
 
 const SiteTitleComponent = ({imgSourceData}) => {
-    console.log(imgSourceData.source)
-    
 
     return (
         <div className="d-flex flex-column align-items-center justify-content-center text-center"

@@ -1,0 +1,39 @@
+.ConnectionCard-Card {
+    width:50%;
+    justify-content: center;
+    align-items: center;
+    background-color: #dab681 !important;
+    border-radius: 12px !important;
+    box-shadow: 5px 5px 30px 15px;
+}
+
+.ConnectionCard-ButtonContainer {
+    width:100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+#connectioncard-avatarimg {
+    margin-top: 20px;
+    width:70%;
+    height:50% !important;
+    border:2px solid black;
+}
+
+#connectioncard-username {
+    text-decoration: underline;
+}
+
+#connectioncard-followbtn {
+    border-radius: 30px !important;
+    background-color: #dcead0;
+    color: black;
+    font-weight: bold;
+}
+
+#connectioncard-followbtn:hover {
+    background-color: #a8c78d;
+}

@@ -1,0 +1,59 @@
+body {
+    background-size:inherit !important;
+}
+
+.activityFeedCol {
+    height:(100vh-50px);
+    /* width:100%; */
+    /* background-color: black; */
+    /* margin-left:25%; */
+    display: flex;
+    justify-content: center;
+}
+
+.activityFeedContainer {
+    width:80%;
+    background-color: white;
+    margin-top:25px;
+    box-shadow: 5px 5px 30px 15px;
+    border-radius: 20px;
+
+}
+
+#activityFeedHeader {
+    padding:8px;
+    border-radius: 13px;
+    background-color: #dab681 !important;
+    height:55px;
+    font-family:"AestheticViolet";
+}
+
+.ProfilePage-NotificationContainer {
+    /* height:(100vh-80px); */
+    /* background-color: blue; */
+    /* width:100%; */
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card {
+    margin-bottom: 10px;
+}
+
+.TripCard-Card {
+    background-color: #dcead0 !important;
+}
+
+.TripCard-LikeContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#notificationbar-container {
+    width:100% !important;
+}
+
+/* .EditProfileForm {
+    position: absolute;
+    left: 75%;
+} */

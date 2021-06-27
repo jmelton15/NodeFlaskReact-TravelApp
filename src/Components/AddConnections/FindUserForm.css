@@ -1,0 +1,26 @@
+
+.FindUserForm-FindUserFormGroup {
+    display: flex;
+    align-items: center;
+}
+
+#username-searchbox {
+    width: 400px !important;
+    margin-right: 30px;
+    border-radius: 20px;
+    text-align: center;
+    border:2px solid black;
+}
+
+#findUserBtn {
+    border-radius: 30px !important;
+    margin-bottom: 8px;
+    width:30%;
+    border:1px solid black;
+    box-shadow: 5px 5px 30px;
+    background-color: #FD5E53;
+}
+
+#findUserBtn:hover {
+    background-color: #cc463c;
+}

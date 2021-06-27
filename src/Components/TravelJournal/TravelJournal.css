@@ -3,7 +3,7 @@
 }
 
 .cover-page {
-    background-image: url("./Images/CoverPage.png");
+    background-image: url("../../Images/CoverPage.png");
     background-size:100% 100%;
     background-repeat: no-repeat;
 }

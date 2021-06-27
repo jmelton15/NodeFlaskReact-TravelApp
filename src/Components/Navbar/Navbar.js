@@ -9,22 +9,26 @@ import {
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import "./Navbar.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars} from "@fortawesome/free-solid-svg-icons";
+
 
 /**
  * 
  * @param {links} param0  [link1,link2,link3] ... ["companies","jobs",etc...]
  * @returns 
  */
-const NavBar = ({username}) => {
+const NavBar = ({user,userId}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
     const linkOptions = {
-      loggedOut: ["Register","Login"],
-      loggedIn: ["About The Site","Create Trip","Travel Journal","Profile","Logout"]
+      loggedOut: [["Register","Register"],["Login","Login"]],
+      loggedIn: [["About The Site","About"],["Create Trip",`users/${user.user_id}/trip`],
+                ["Travel Journal",`users/${user.user_id}/traveljournal`],["Profile",`users/${user.user_id}/profile`],["Logout","Logout"]]
     }
     
-    let links = username ? linkOptions.loggedIn : linkOptions.loggedOut
+    let links = user.username ? linkOptions.loggedIn : linkOptions.loggedOut
     
     return (
       <div className="Navbar-navbar">
@@ -37,7 +41,7 @@ const NavBar = ({username}) => {
                     return (<NavItem
                               key={i}
                             >
-                        <NavLink to={`/${l.toString().toLowerCase()}`}>{l}</NavLink>
+                        <NavLink to={`/${l[1].toString().toLowerCase()}`}>{l[0]}</NavLink>
                     </NavItem>)
                 })}
             </Nav>

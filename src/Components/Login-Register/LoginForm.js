@@ -55,7 +55,7 @@ const LoginForm = ({loginUser}) => {
                     </div>
                 </CardBody>  
             </Card> 
-            <Button className="mt-2 btn-lg" style={{"background-color":"#21ADA8"}}>Login</Button>
+            <Button className="mt-2 btn-lg" style={{"backgroundColor":"#21ADA8"}}>Login</Button>
             </FormGroup>
         </Form>
     )

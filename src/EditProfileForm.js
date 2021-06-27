@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Form,FormGroup,Input,Card,CardBody,CardImg,Label} from "reactstrap";
+import {Form,FormGroup,Input,Card,CardBody,CardImg,Label,Button} from "reactstrap";
 
 const EditProfileForm = ({commitEdits}) => {
     const initialState = {
@@ -23,11 +23,11 @@ const EditProfileForm = ({commitEdits}) => {
 
 
     return (
-        <Form onSubmit={handleSubmit} className="mt-3">
+        <Form onSubmit={handleSubmit} className="mt-3 EditProfileForm">
             <FormGroup>
             <Card className="route-form-container">
                 <CardImg top width="100%" src="" />
-                <CardBody>
+                <CardBody className="d-flex flex-column">
                     <Label htmlFor="email">Change Email Address</Label>
                     <Input 
                         key="1"
@@ -50,6 +50,7 @@ const EditProfileForm = ({commitEdits}) => {
                         onChange={handleChange}
                     >
                     </Input>
+                    <Button className="mt-3" onClick={handleSubmit}>Edit</Button>
                 </CardBody>  
             </Card> 
             </FormGroup>

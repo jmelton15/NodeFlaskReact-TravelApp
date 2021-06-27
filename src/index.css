@@ -34,6 +34,10 @@ label {
   font-family: "Wanderlust";
   src:url('./fonts/WanderlustRegular.woff');
 }
+@font-face {
+  font-family: "AestheticViolet";
+  src:url('./fonts/Aesthetic-Violet.woff');
+}
 
 /* #HomePage-Header-Container {
   background:white;

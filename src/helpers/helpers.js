@@ -25,5 +25,17 @@ const filterData = (dataObj) => {
     return !("password" in filtered) ? null : filtered;
 }
 
-export {GoToPage,GetFromLocalStorage,filterData};
+const hasValue = (arrayOfObjects,key,value) => {
+    let count = 0;
+    arrayOfObjects.every((obj) => {
+        if(obj[key] === value) {
+            count++;
+            return false;
+        }
+        return true;
+    });
+    return count > 0 ? true : false;
+}
+
+export {GoToPage,GetFromLocalStorage,filterData,hasValue};
 

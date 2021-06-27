@@ -1,8 +1,11 @@
-import {useState} from "react";
-import {Form,FormGroup,Label,Input,Card,CardBody,CardTitle,CardImg,CardText,CardSubtitle} from "reactstrap";
+import {useEffect, useState} from "react";
+import {Form,FormGroup,Button,Label,Input,Card,CardBody,CardTitle,CardImg,CardText,CardSubtitle} from "reactstrap";
 
 
-const TripOptionsForm = ({createTrip}) => {
+const TripOptionsForm = ({createTrip,saveTrip,hasCreated,toggleHasCreated}) => {
+    
+    
+
     const regionCodes = {
         "US":"United States",
         "AQ":"Antarctica",
@@ -23,7 +26,6 @@ const TripOptionsForm = ({createTrip}) => {
         "none":"Any (must specify city, state, or country in your search)"
     };
 
-
     const initialState = {
         startLocation:"",
         endLocation:"",
@@ -41,10 +43,10 @@ const TripOptionsForm = ({createTrip}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        createTrip({...formData});
+        hasCreated ? saveTrip() : createTrip({...formData});
         setFormData(initialState);
+        toggleHasCreated();
     }
-
 
     return (
         <Form onSubmit={handleSubmit} className="mt-3">
@@ -101,7 +103,11 @@ const TripOptionsForm = ({createTrip}) => {
                             )
                         })}
                     </Input>
-                </CardBody>  
+                </CardBody> 
+                <div className="d-flex justify-content-center">
+                {!hasCreated && <Button className="text-center mt-3 mx-3" color="primary" id="create">Create Trip</Button>}
+                {hasCreated && <Button className="text-center mt-3 mx-3" color="primary" id="save">Save Trip</Button>}
+                </div> 
             </Card> 
             </FormGroup>
         </Form>

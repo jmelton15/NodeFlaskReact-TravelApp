@@ -1,32 +1,36 @@
 import { BrowserRouter } from "react-router-dom";
 import './App.css';
-import Navbar from "./Navbar"
+import Navbar from "./Components/Navbar/Navbar";
 import Routes from "./Routes";
-import { useEffect, useState } from 'react';
+import UserContext from "./helpers/UserContext";
+import LocalStorageState from "./helpers/LocalStorageState";
+
+function App() {
+
+  const [user,setUser] = LocalStorageState("currentUser",{});
+  const [token,setToken] = LocalStorageState("token",null);
+ 
+  const [markers,setMarkers] = LocalStorageState("markers",[]);
+
+  const [tripData,setTripData] = LocalStorageState("tripData",[])
 
 
-
-function App({csrfToken}) {
-  //TODO - ADD useContext() for Map component to use
-  
-  const [locations,setLocations] = useState([]);
-
-  const changeLocations = () => {
-    setLocations([{
-      name:"Location 1",
-      location: {
-        lat:42.9634,
-        lng:-85.6681
-      }
-    }])
-  } 
   return (
-    <BrowserRouter>
       <div className="App">
-        <Navbar />
-        <Routes changeLocations={changeLocations} locations={locations} csrfToken={csrfToken}/>
+        <BrowserRouter>
+        <main>
+          <Navbar user={user}/>
+          <UserContext.Provider value={{user,setUser,
+                                        token,setToken,
+                                        markers,setMarkers,
+                                        tripData,setTripData}}
+          >
+            <Routes />
+          </UserContext.Provider>
+        </main>
+        </BrowserRouter>
       </div>
-    </BrowserRouter>
+    
     
   );
 }

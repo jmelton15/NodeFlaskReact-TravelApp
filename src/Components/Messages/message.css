@@ -1,0 +1,31 @@
+.Message-AvatarPic {
+    height:60px;
+    width:60px;
+    border-radius: 30px;
+    margin-right:20px
+}
+
+.Message {
+    margin-top: 25px;
+}
+
+.Message.own {
+    margin-right: 20px;
+}
+.Message.other {
+    margin-left: 15px;
+}
+
+.Message-Text-Other {
+    max-width: 300px;
+    background-color: #dcead0;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+.Message-Text-Own {
+    max-width: 300px;
+    background-color: #E6E6FA;
+    border-radius: 15px;
+    padding: 10px;
+}
