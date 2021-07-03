@@ -1,7 +1,5 @@
 import axios from "axios";
-import { GetFromLocalStorage } from "../helpers/helpers";
-import {v4 as uuid} from "uuid";
-import defaultImg from "../Images/default_trip.jpg";
+const FormData = require('form-data');
 
 const NODE_BASE_URL = process.env.REACT_APP_NODE_API || "http://127.0.0.1:3001"
 
@@ -59,11 +57,12 @@ class NodeApi {
      * 
      * returns {id,msgTxt,toUserId,fromUserId}
      */
-    static async sendMessage(msgTxt,toUserId,fromUserId,jwt) {
+    static async sendMessage(msgTxt,toUserId,fromUserId,fromUserAvatar,jwt) {
         let sentMessage = await axios.post(`${NODE_BASE_URL}/messages/create`,{
             msgTxt,
             toUserId,
-            fromUserId
+            fromUserId,
+            fromUserAvatar
         },{
             headers:{
                 Authorization:jwt
@@ -84,7 +83,68 @@ class NodeApi {
         });
         return messages.data.messages;
     }
-}
+
+    /**
+     * returns {}
+     */
+    static async followUser(userFollowingId,userBeingFollowedId,jwt) {
+        let followResp = await axios.post(`${NODE_BASE_URL}/users/${userFollowingId}/follow/${userBeingFollowedId}`,{},{
+            headers:{
+                Authorization:jwt 
+            }
+        })
+        return followResp.data.followedRes;
+    }
+
+    /**
+     * returns {Success: message string}
+     */
+    static async unfollowUser(userFollowingId,userBeingFollowedId,jwt) {
+        let followResp = await axios.delete(`${NODE_BASE_URL}/users/${userFollowingId}/unfollow/${userBeingFollowedId}`,{
+            headers:{
+                Authorization:jwt 
+            }
+        })
+        return followResp.data.Success;
+    }
+
+    static async editBio(userId,bioTxt,jwt) {
+        let newBio = await axios.patch(`${NODE_BASE_URL}/users/${userId}/bio`,{
+            bioTxt
+        },{
+            headers:{
+                Authorization:jwt 
+            }
+        });
+        return newBio.data.newBio;
+    }
+    
+    static async uploadPicture(userId,file,jwt) {
+        const formData = new FormData();
+        let avatarPicUrl = file;
+        formData.append('avatarPicUrl',avatarPicUrl)
+        let uploaded = await axios.post(`${NODE_BASE_URL}/users/${userId}/upload`,
+            formData
+        ,{
+            headers:{
+                'Authorization':jwt,
+                'Content-Type':'multipart/form-data'
+            }
+        });
+        return uploaded.data.newAvatar.avatar_pic_url;
+    }
+
+    static async getAvatar(userId,filename,jwt,cancelToken="") {
+        let avatar = await axios.get(`${NODE_BASE_URL}/users/${userId}/uploads/${filename}`,{
+            cancelToken:cancelToken,
+            headers:{
+                Authorization:jwt 
+            }
+        });
+        console.log(avatar)
+        return avatar.data;
+    }
+} 
 
 
 export {NodeApi};

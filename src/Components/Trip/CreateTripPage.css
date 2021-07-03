@@ -1,0 +1,16 @@
+.CreateTripPage-FormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.CreateTripPage-HelpContainer {
+    background-color: white;
+    box-shadow: 5px 5px 20px grey;
+    border-radius: 20px;
+    border:2px solid black;
+    padding: 3px;
+}
+
+#createtrippage-helpIcon:hover {
+    cursor: pointer;
+}

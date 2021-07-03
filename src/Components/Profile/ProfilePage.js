@@ -1,36 +1,55 @@
-import EditProfileForm from "../../EditProfileForm"
 import { Container, Row, Col } from 'reactstrap';
 import "./ProfilePage.css";
-import TripCard from "../Trip/TripCard";
+import TripCard from "../ActivityFeed/TripCard";
 import {useEffect,useState} from "react";
 import {NodeApi} from "../../APIRequests/nodeApi";
 import axios from "axios";
 import NotificationBar from "./NotificationBar";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
+import UserInfoCard from "./UserInfoCard";
+
 
 
 const ProfilePage = ({user,setUser,token}) => {
     const [connectionsTrips,setConnectionsTrips] = useState([]);
     const history = useHistory();
+    const [profilePic,setProfilePic] = useState(user.avatar_pic_url);
+
+    async function getConnectionsTrips() {
+        let cancelAxios = axios.CancelToken.source();
+        let trips = await NodeApi.getUserConnectionsTrips(user.user_id,cancelAxios.CancelToken,token);
+        if(trips !== []) setConnectionsTrips(trips);
+        return cancelAxios
+    }
+    async function getConnections() {
+        let cancelAxios = axios.CancelToken.source();
+        let connections = await NodeApi.getUsersConnections(user.user_id,cancelAxios.CancelToken,token);
+        setUser(connections);
+        return cancelAxios.cancel();
+    }
+
     useEffect(() => {
-        async function getConnectionsTrips() {
-            const cancelAxios = axios.CancelToken.source();
-            let trips = await NodeApi.getUserConnectionsTrips(user.user_id,cancelAxios.CancelToken,token);
-            if(trips !== []) setConnectionsTrips(trips);
-        }
-        async function getConnections() {
-            const cancelAxios = axios.CancelToken.source();
-            let connections = await NodeApi.getUsersConnections(user.user_id,cancelAxios.CancelToken,token);
-            setUser(connections);
-        }
-        getConnectionsTrips();
+        if(user.follow_count > 0) getConnectionsTrips();
         getConnections();
-    },[token,setUser,user.user_id])
+    },[])
+
+
+    const uploadPicture = async (file) => {
+        let newAvatar = await NodeApi.uploadPicture(user.user_id,file,token);
+        setProfilePic(newAvatar);
+        getConnections()
+        alert("Profile Avatar Has Been Changed!");
+    }
+
 
     const goToPage = (path) => {
         history.push(`/${path}`);
     }
-    
+
+    if(!token || !user) {
+        return <Redirect to="/"></Redirect>
+    }
+
     return (
         <>
         <Container fluid>
@@ -52,6 +71,15 @@ const ProfilePage = ({user,setUser,token}) => {
                 <Col xs="4" className="ProfilePage-NotificationContainer">
                     <div className="mt-4" id="notificationbar-container">
                         <NotificationBar goToPage={goToPage} user={user}/>
+                        <UserInfoCard 
+                            user={user} 
+                            goToPage={goToPage} 
+                            token={token} 
+                            uploadPicture={uploadPicture} 
+                            profilePic={profilePic}
+                            setProfilePic={setProfilePic}
+                            getConnections={getConnections}
+                        />
                     </div>
                 </Col>
             </Row>

@@ -1,11 +1,12 @@
 import {useEffect, useState} from "react";
-import {Form,FormGroup,Button,Label,Input,Card,CardBody,CardTitle,CardImg,CardText,CardSubtitle} from "reactstrap";
+import {Form,FormGroup,Button,Input,Card,CardBody,CardImg,Tooltip} from "reactstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faQuestionCircle} from "@fortawesome/free-regular-svg-icons";
 
-
-const TripOptionsForm = ({createTrip,saveTrip,hasCreated,toggleHasCreated}) => {
+const TripOptionsForm = ({createTrip,hasCreated,setHasCreated,resetMap,toggleHelp,setShowHelp}) => {
+    const [helpTTOpen, setHelpTTOpen] = useState(false);
+    const toggleHelpToolTip = () => setHelpTTOpen(!helpTTOpen);
     
-    
-
     const regionCodes = {
         "US":"United States",
         "AQ":"Antarctica",
@@ -43,9 +44,14 @@ const TripOptionsForm = ({createTrip,saveTrip,hasCreated,toggleHasCreated}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        hasCreated ? saveTrip() : createTrip({...formData});
-        setFormData(initialState);
-        toggleHasCreated();
+        if(formData && formData.startLocation !== "") {
+            createTrip({...formData});
+            setFormData(initialState);
+            setHasCreated(true);
+            return;
+        }
+        alert("Please Fill Out Form Information Before Submitting");
+        return;
     }
 
     return (
@@ -104,9 +110,11 @@ const TripOptionsForm = ({createTrip,saveTrip,hasCreated,toggleHasCreated}) => {
                         })}
                     </Input>
                 </CardBody> 
-                <div className="d-flex justify-content-center">
+                <FontAwesomeIcon icon={faQuestionCircle} size="lg" className="mx-3" id="createtrippage-helpIcon" onClick={toggleHelp}/>
+                <Tooltip toggle={toggleHelpToolTip} isOpen={helpTTOpen} target="createtrippage-helpIcon">Click For Help</Tooltip>
+                <div className="d-flex justify-content-end mb-3 me-4">
                 {!hasCreated && <Button className="text-center mt-3 mx-3" color="primary" id="create">Create Trip</Button>}
-                {hasCreated && <Button className="text-center mt-3 mx-3" color="primary" id="save">Save Trip</Button>}
+                <Button className="text-center mt-3" color="danger" onClick={resetMap}>Reset Map</Button>
                 </div> 
             </Card> 
             </FormGroup>

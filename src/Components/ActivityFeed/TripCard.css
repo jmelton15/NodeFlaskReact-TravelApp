@@ -1,0 +1,40 @@
+
+.TripCard-Card{
+    border-radius: 20px !important;
+}
+
+
+.TripCard-TripDetails{
+    overflow-y:scroll;
+    max-height: 300px ;
+}
+
+#tripcard-tripimg {
+    height:250px;
+    border:2px solid rgb(108, 117, 125);
+    box-shadow: 5px 5px 30px grey;
+}
+
+#tripcard-useravatar {
+   height:70px;
+   width:70px;
+   /* border-radius: 50px; */
+   margin-top: 10px;
+   margin-left: 20px;
+   border:2px solid rgb(108, 117, 125);
+   box-shadow: 5px 5px 30px grey;
+}
+
+#tripcard-username {
+    color: #E97451;
+    font-family: "AestheticViolet";
+    /* font-weight: bold; */
+    text-decoration: underline dotted black;
+    position:absolute;
+    right:42%;
+    margin-top: 10px;
+}
+
+#tripcard-likecountbadge {
+    color:black;
+}

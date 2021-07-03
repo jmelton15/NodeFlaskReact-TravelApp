@@ -1,10 +1,9 @@
 .ConnectionCard-Card {
-    width:50%;
     justify-content: center;
     align-items: center;
-    background-color: #dab681 !important;
     border-radius: 12px !important;
-    box-shadow: 5px 5px 30px 15px;
+    background-color: #E6E6FA !important;
+    box-shadow: 5px 30px 15px;
 }
 
 .ConnectionCard-ButtonContainer {
@@ -36,4 +35,28 @@
 
 #connectioncard-followbtn:hover {
     background-color: #a8c78d;
+}
+
+#connectioncard-followingInfo {
+    display: flex;
+    justify-content: center;
+}
+
+#connectioncard-followers{
+    margin-right: 30px;
+}
+#connectioncard-followers span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#connectioncard-following span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#alreadyFollowing {
+    color:#21ADA8;
+    margin-right: 10px;
+    font-weight: bold;
 }

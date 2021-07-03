@@ -1,5 +1,6 @@
 import {useHistory} from "react-router-dom";
 
+
 const GoToPage = () => {
     const history = useHistory();
 
@@ -9,6 +10,7 @@ const GoToPage = () => {
     }
     getPage();
 }
+
 
 const GetFromLocalStorage = (key) => {
     let value = JSON.parse(window.localStorage.getItem(key));
@@ -36,6 +38,10 @@ const hasValue = (arrayOfObjects,key,value) => {
     });
     return count > 0 ? true : false;
 }
+
+// const getAvatarUrl = (userId,filename,token) => {
+//     return `http://localhost:3001/users/${userId}/uploads/${filename}/${token}`;
+// }
 
 export {GoToPage,GetFromLocalStorage,filterData,hasValue};
 

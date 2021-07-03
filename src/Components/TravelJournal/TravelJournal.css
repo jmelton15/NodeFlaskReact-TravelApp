@@ -1,13 +1,82 @@
-.demoPage {
+.non-coverpage {
     background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between !important;
 }
 
 .cover-page {
-    background-image: url("../../Images/CoverPage.png");
+    background-image: url("../../Images/Capstone2JournalCover.png");
     background-size:100% 100%;
     background-repeat: no-repeat;
 }
-/* .stf__parent {
-    background-image: url("./Images/fernTable.jpg");
-    background-size: contain;
-} */
+
+.TravelJournal-AttributionContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 3px;
+}
+
+.TravelJournal-TripCard {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.TravelJournal-PageNumberContainer {
+    position: absolute;
+    bottom:-15px;
+    font-family: "AestheticViolet";
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.TravelJournal-TripTitleContainer {
+    display:flex;
+    justify-content: space-between;
+}
+
+.TravelJournal-ButtonContainer {
+    position: absolute;
+    bottom:0px;
+    right:0px;
+}
+
+#traveljournal-trashIcon:hover {
+    cursor: pointer;
+}
+
+#traveljournal-remakeTripBtn:hover {
+    cursor: pointer;
+}
+
+#traveljournal-triptitle{
+    text-decoration: underline dotted;
+    font-family: "AestheticViolet";
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+
+#picAttribution {
+    font-size: smaller;
+    text-decoration: none !important;
+}
+
+
+#page-tripPic {
+   max-height: 300px !important;
+}
+
+#traveljournal-waypointlist:before {
+    content: '📌';
+    margin-left: -20px;
+    margin-right: 10px;
+}
+
+#traveljournal-waypointlist {
+    list-style-type: none !important;
+ }
+
+ #travlejournal-placelink {
+     text-decoration: none;
+ }

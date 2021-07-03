@@ -2,7 +2,7 @@ import { Button} from 'reactstrap';
 import {useHistory} from "react-router-dom";
 import "./HomePage.css"
 
-const HomePage = ({user}) => {
+const HomePage = ({user,token}) => {
     
     const history = useHistory();
     const goToPage = (e) => {
@@ -11,8 +11,7 @@ const HomePage = ({user}) => {
     }
     
     
-    if(user.username) {
-        //add logic for when signed in
+    if(token) {
         return (
             <div className="HomePage-HeaderContainer">
                 <h1 className="HomePage-LoggedInHeader" id="HomePage-ButtonGroup">Welcome Back, {user.username.toUpperCase()}</h1>

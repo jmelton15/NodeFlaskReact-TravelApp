@@ -1,0 +1,20 @@
+.BioUpdateForm-CheckMarkIconContainer {
+    background-color: #E97451;
+    width:10%;
+    border-radius: 20px;
+}
+.BioUpdateForm-CheckMarkIconContainer:hover {
+   cursor: pointer;
+}
+
+#bioupdateform-checkmarkIcon {
+    text-align: center;
+}
+
+#bioupdateform-editBtn {
+    height: 25px !important;
+    width: 55px !important;
+    font-size: 12px;
+    text-align: center !important;
+}
+

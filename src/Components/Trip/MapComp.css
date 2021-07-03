@@ -1,0 +1,13 @@
+.MapComp-MapContainer {
+    box-shadow: 5px 5px 20px 15px;
+    border-top-right-radius: 23px 130px !important;
+    border-top-left-radius: 37px 140px;
+    border-bottom-left-radius: 110px 19px;
+    border-bottom-right-radius: 120px 24px;
+    border:2px solid black;
+}
+
+#mapcomp-infowindowPic {
+    height:300px;
+    width:300px;
+}

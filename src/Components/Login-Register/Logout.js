@@ -14,7 +14,6 @@ const Logout = ({setUser,setMarkers,setToken,setTripData}) => {
     setMarkers([])
     setToken(null)
     setTripData([])
-
     return (
         <Redirect to="/" />
     )

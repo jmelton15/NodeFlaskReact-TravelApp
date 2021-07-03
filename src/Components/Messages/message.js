@@ -1,4 +1,3 @@
-import sampleImg from "../../Images/fernTable.jpg";
 import "./message.css";
 
 const Message = ({message,currentUser}) => {
@@ -8,10 +7,12 @@ const Message = ({message,currentUser}) => {
         msgTxtOwnership = "Message-Text-Own";
         msgOwnership = "Message own";
     }
-    
+
+
+
     return (
         <div className={msgOwnership}>
-            <img className="Message-AvatarPic" src={sampleImg} alt="Avatar Pic"/>
+            <img className="Message-AvatarPic" src={message.fromUserAvatar} alt="Avatar Pic"/>
             <div id="message-body">
                 <p className={msgTxtOwnership} id="message-text">{message.msgTxt}</p>
             </div>

@@ -15,11 +15,11 @@ const NotificationBar = ({messages,goToPage,user}) => {
           size="lg" 
           color="#6c757d"
       />
-      <h5><Badge color="secondary" id="icon-badge">Check Messages</Badge></h5>
+      <h4><Badge color="secondary" id="icon-badge">Check Messages</Badge></h4>
       </div>
       <div className="d-flex align-items-center" onClick={()=>goToPage("users/find")}>
       <FontAwesomeIcon className="NotificationBar-UserIcon NotificationBar-Icons" icon={faUserPlus} size="lg" color="#6c757d"/>
-      <h5><Badge color="secondary" id="icon-badge">Add Connection</Badge></h5>
+      <h4><Badge color="secondary" id="icon-badge">Search Users</Badge></h4>
       </div>
     </div>
     )

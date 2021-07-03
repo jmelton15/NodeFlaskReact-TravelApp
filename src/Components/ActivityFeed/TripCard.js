@@ -1,7 +1,7 @@
 import React from 'react'
 import {
     Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Row,Col, Container
+    CardTitle, CardSubtitle, Button, Row,Col, Container, Badge
   } from 'reactstrap';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faThumbsUp as tuSolid,faThumbsDown as tdSolid} from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +14,7 @@ import "./TripCard.css";
 
 function TripCard({user,trip,token}) {
     const [hasLiked,setHasLiked] = useState(false);
+    const [likes,setLikes] = useState(trip.like_count);
     
     const toggleHasLiked = () => {
         setHasLiked(!hasLiked);
@@ -22,6 +23,7 @@ function TripCard({user,trip,token}) {
     const likeTrip = async (tripId) => {
         const likedTrip = await NodeApi.likeTrip(user.user_id,tripId,token);
         toggleHasLiked();
+        setLikes(like => like = like + 1)
     }
     let hasLikes = user.liked_trips !== [] ? true : false;
 
@@ -42,31 +44,36 @@ function TripCard({user,trip,token}) {
     const unlikeTrip = async (tripId) => {
         const unlikedTrip = await NodeApi.unlikeTrip(user.user_id,tripId,token);
         toggleHasLiked();
+        setLikes(like => like = like - 1)
     }
 
     return (
         <div>
             <Card className="TripCard-Card">
-            <CardImg  id="tripcard-useravatar" src={trip.avatar_pic_url} alt="Profile Avatar" />
+            <div className="d-flex align-items-center">
+                <CardImg  id="tripcard-useravatar" src={trip.avatar_pic_url} alt="Profile Avatar" />
+                <CardTitle tag="h2" className="text-center" id="tripcard-username">{trip.username.toUpperCase()}</CardTitle>
+            </div>
             <CardBody className="TripCard-CardBody">
                 <Container fluid>
                     <Row>
-                        <Col>
-                            <CardTitle tag="h5" className="text-center" id="tripcard-username">{trip.username.toUpperCase()}</CardTitle>
-                            <CardSubtitle tag="h6" className="mb-2 text-muted">
-                                Trip From {trip.start_point.toUpperCase()} To {trip.end_point.toUpperCase()}
-                            </CardSubtitle>
-                            {trip.waypoint_names && 
-                            <ul className="TripCard-WaypointsList">
-                                {trip.waypoint_names.map((name) => {
-                                    return <li>{name}</li>
-                                })}
-                            </ul>
-                            }
+                        <Col >
+                            <div className="TripCard-TripDetails">
+                                <CardSubtitle tag="h6" className="mb-2 text-muted">
+                                    Trip From {trip.start_point.toUpperCase()} To {trip.end_point.toUpperCase()}
+                                </CardSubtitle>
+                                {trip.waypoint_names && 
+                                <ul className="TripCard-WaypointsList">
+                                    {trip.waypoint_names.map((name) => {
+                                        return <li>{name}</li>
+                                    })}
+                                </ul>
+                                }
+                            </div>
                         </Col>
                         <Col className="d-flex align-items-center">
                             <div className="TripCard-TripImageContainer">
-                                <img id="tripcard-tripimg" width="100%" src={trip.photo} alt="Trip" />
+                                <img id="tripcard-tripimg" width="100%" src={trip.photo.img_url} alt="Trip" />
                             </div> 
                         </Col>
                     </Row>    
@@ -81,6 +88,7 @@ function TripCard({user,trip,token}) {
                         }
                         }
                     />
+                    <Badge id="tripcard-likecountbadge">{likes}</Badge>
                 </div>
             </CardBody>
             

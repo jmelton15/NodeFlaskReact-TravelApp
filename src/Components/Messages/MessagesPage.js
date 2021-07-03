@@ -1,6 +1,7 @@
 import "./MessagesPage.css";
-import { Container, Row, Col, ButtonToggle } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import {io} from "socket.io-client";
+import { Redirect } from "react-router-dom";
 import { useState,useEffect,useRef } from "react";
 import Message from "./message";
 import MessageForm from "./MessageForm";
@@ -10,12 +11,12 @@ import Conversation from "../Conversations/Conversation";
 const MessagesPage = ({user,token}) => { 
     const socket = useRef();
     const scrollRef = useRef();
-    const [messages,setMessages] = useState([]);
+    const [messages,setMessages] = useState(null);
     const [toUser,setToUser] = useState(null);
     const [socketMessage,setSocketMessage] = useState(null);
-
+    
 /******************************************************************************* */
-    /**** SOCKET useEffect CODE  ****/
+    /**** WebSocket useEffect Code  ****/
     useEffect(() => {
         socket.current = io("ws://localhost:8001");
         socket.current.on("getMessage",msgData => {
@@ -45,19 +46,22 @@ const MessagesPage = ({user,token}) => {
     },[messages])
 
 /******************************************************************************* */
+    /**** Message Handling Code  ****/
 
     const sendMsg = (msgData) => {
-        let sentMessage = NodeApi.sendMessage(msgData.message,toUser,user.user_id,token)
+        let sentMessage = NodeApi.sendMessage(msgData.message,toUser,user.user_id,user.avatar_pic_url,token)
         if(sentMessage) {
             socket.current.emit("sendMessage",{
                 fromUserId:user.user_id,
                 toUserId:toUser,
-                msgTxt:msgData.message
+                msgTxt:msgData.message,
+                fromUserAvatar:user.avatar_pic_url
             })
             setMessages(prevMsg =>[...prevMsg,{
                 toUserId:toUser,
                 fromUserId:user.user_id,
-                msgTxt:msgData.message
+                msgTxt:msgData.message,
+                fromUserAvatar:user.avatar_pic_url
             }])
         }
     }
@@ -68,29 +72,33 @@ const MessagesPage = ({user,token}) => {
     };
 
 /******************************************************************************* */
+
+    if(!token || !user) {
+        return <Redirect to="/"></Redirect>
+    }
     return (
         <div>
             <Container fluid>
                 <Row>
                     <Col xs="8" className="MessagesPage-MessageCol">
                         <div className="MessagesPage-MessageContainer">
-                            {messages[0] === undefined && 
+                            {!messages && 
                                 <div className="MessagePage-StartMessageContainer"> 
                                     <blockquote>Click On A Connection To Open Up A Conversation...</blockquote>
                                 </div>
                             }
                             <div id="message-wrapper">
-                                {messages.map((message) => {
+                                {messages && messages.map((message) => {
                                 return <div ref={scrollRef}>
                                             <Message message={message} currentUser={user.user_id}/>
                                         </div>
                                 })}
                             </div>
-                            <MessageForm sendMsg={sendMsg}/>
+                            {messages && <MessageForm sendMsg={sendMsg}/>}
                         </div>
                     </Col>
                     <Col xs="4" className="MessagesPage-ConversationsCol">
-                        <div className="MessagesPage-ConverstaionContainer">
+                        <div className="MessagesPage-ConverstaionContainer" onClick={() => setMessages(null)}>
                             <div id="conversations-header">
                                 <h2 className="mt-1">Connections</h2>
                             </div>

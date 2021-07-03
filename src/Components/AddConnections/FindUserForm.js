@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Form,FormGroup,Input,Button} from "reactstrap";
 import "./FindUserForm.css";
 
-const FindUserForm = ({findUser}) => {
+const FindUserForm = ({findUser,user}) => {
     const initialState = {
         username:""
     }
@@ -17,6 +17,10 @@ const FindUserForm = ({findUser}) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(formData.username === user.username) {
+            setFormData(initialState)
+            return;
+        }
         findUser({...formData});
         setFormData(initialState);
     }

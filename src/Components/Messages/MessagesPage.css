@@ -60,6 +60,9 @@
     height: 3000px;
     color: grey;
 }
+#messagepage-emojiToggler:hover {
+    cursor: pointer;
+}
 
 #messageInput {
     width: 80%;

@@ -1,0 +1,60 @@
+.UserInfoCard-Card {
+    background-color: #E6E6FA !important;
+    box-shadow: 5px 30px 15px;
+}
+
+#userinfocard-editBioIcon:hover {
+    cursor: pointer;
+}
+
+#userinfocard-username{
+    font-family: "AestheticViolet";
+    font-weight: bold;
+}
+
+#userinfocard-followingInfo {
+    display: flex;
+    justify-content: center;
+}
+
+#userinfocard-followers{
+    margin-right: 30px;
+}
+#userinfocard-followers:hover{
+    cursor: pointer;
+}
+#userinfocard-followers span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#userinfocard-following:hover {
+    cursor: pointer;
+}
+#userinfocard-following span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#userinfocard-followBtn {
+    border-radius: 30px !important;
+    background-color: #dcead0;
+    color: black;
+    font-weight: bold;
+}
+
+#userinfocard-followBtn:hover {
+    background-color: #a8c78d;
+}
+
+
+#alreadyFollowing {
+    color:#21ADA8;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+#userinfocard-journalIcon:hover {
+ cursor: pointer;
+}
+
