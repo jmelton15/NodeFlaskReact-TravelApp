@@ -26,6 +26,10 @@ const CreateTripPage = ({setMarkers,markers,user,token}) => {
     }
 
     const createTrip = async (tripFormData) => {
+        if(user.trip_count >= 4) {
+            alert("Currently, Users Are Only Allowed To Create 4 Trips. Go To The 'About Page' To Learn More");
+            return;
+        }
         const start = tripFormData.startLocation;
         const end = tripFormData.endLocation;
         setStartAndEnd({start,end})
