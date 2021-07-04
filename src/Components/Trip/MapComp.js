@@ -4,9 +4,11 @@ import {GoogleMap, LoadScript, Marker, InfoWindow,MarkerClusterer} from '@react-
 import { useEffect, useState } from 'react';
 import {Button} from "reactstrap";
 import {v4 as uuid} from "uuid";
-const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
+import GetScreenSize from '../../helpers/GetScreenSize';
 
-    
+const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
+    const [screenWidth] = GetScreenSize();
+
     const [selected,setSelected] = useState({});
    
     const [defaultZoom,setDefaultZoom] = useState(4);
@@ -21,13 +23,19 @@ const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
       // zoomOnClick:false // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 
     }
-    const mapStyles = {        
+
+    const mapStyles = screenWidth > 420 ? {        
       height: "90vh",
       width: "100%",
       borderTopRightRadius: "23px 130px",
       borderTopLeftRadius: "37px 140px",
       borderBottomLeftRadius: "110px 19px",
       borderBottomRightRadius: "120px 24px",
+    } :
+    {
+      height: "90vh",
+      width: "100%",
+      borderRadius:"30px"
     }
     
     

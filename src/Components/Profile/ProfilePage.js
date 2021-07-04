@@ -7,10 +7,12 @@ import axios from "axios";
 import NotificationBar from "./NotificationBar";
 import { Redirect, useHistory } from "react-router-dom";
 import UserInfoCard from "./UserInfoCard";
-
+import GetScreenSize from '../../helpers/GetScreenSize';
 
 
 const ProfilePage = ({user,setUser,token}) => {
+    const [screenWidth] = GetScreenSize();
+
     const [connectionsTrips,setConnectionsTrips] = useState([]);
     const history = useHistory();
     const [profilePic,setProfilePic] = useState(user.avatar_pic_url);
@@ -50,43 +52,86 @@ const ProfilePage = ({user,setUser,token}) => {
         return <Redirect to="/"></Redirect>
     }
 
-    return (
-        <>
-        <Container fluid>
-            <Row>
-                <Col xs="8" className="activityFeedCol">
-                    <div className="activityFeedContainer">
-                        <div className="ActivityFeed-HeaderContainer">
-                            <h2 className="text-center" id="activityFeedHeader">Activity Feed</h2>
-                        </div>
-                            {connectionsTrips !== [] && connectionsTrips.map((trip) => {
-                               return (
-                                <div className="activityFeedCard">
-                                    <TripCard user={user} trip={trip} token={token}/>
-                                </div>
-                               )
-                            })}
-                    </div>
-                </Col>
-                <Col xs="4" className="ProfilePage-NotificationContainer">
+    if(screenWidth <= 420) {
+        return (
+            <>
+            <Container fluid>
+                <Row className="ProfilePage-MobileUserInfoRow">
                     <div className="mt-4" id="notificationbar-container">
-                        <NotificationBar goToPage={goToPage} user={user}/>
-                        <UserInfoCard 
-                            user={user} 
-                            goToPage={goToPage} 
-                            token={token} 
-                            uploadPicture={uploadPicture} 
-                            profilePic={profilePic}
-                            setProfilePic={setProfilePic}
-                            getConnections={getConnections}
-                        />
+                            <NotificationBar goToPage={goToPage} user={user}/>
+                            <UserInfoCard 
+                                user={user} 
+                                goToPage={goToPage} 
+                                token={token} 
+                                uploadPicture={uploadPicture} 
+                                profilePic={profilePic}
+                                setProfilePic={setProfilePic}
+                                getConnections={getConnections}
+                            />
                     </div>
-                </Col>
-            </Row>
-        </Container>
-        </>
-    )
-
+                </Row>
+                <Row className="ProfilePage-MobileActivityFeedRow">
+                    <Col>
+                        <div className="activityFeedContainer">
+                            <div className="ActivityFeed-HeaderContainer">
+                                <h2 className="text-center" id="activityFeedHeader">Activity Feed</h2>
+                            </div>
+                                {connectionsTrips !== [] && connectionsTrips.map((trip) => {
+                                   return (
+                                    <div className="activityFeedCard">
+                                        <TripCard user={user} trip={trip} token={token}/>
+                                    </div>
+                                   )
+                                })}
+                                <div className="d-flex justify-content-center">
+                                    {connectionsTrips && <blockquote className="text-muted">No Recent Trips From Your Connections</blockquote>}
+                                </div>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            </>
+        )
+    }
+    else {
+        return (
+            <>
+            <Container fluid>
+                <Row>
+                    <Col xs="8" className="activityFeedCol">
+                        <div className="activityFeedContainer">
+                            <div className="ActivityFeed-HeaderContainer">
+                                <h2 className="text-center" id="activityFeedHeader">Activity Feed</h2>
+                            </div>
+                                {connectionsTrips !== [] && connectionsTrips.map((trip) => {
+                                   return (
+                                    <div className="activityFeedCard">
+                                        <TripCard user={user} trip={trip} token={token}/>
+                                    </div>
+                                   )
+                                })}
+                                {connectionsTrips === [] && <blockquote className="text-muted">No Recent Trips From Your Connections</blockquote>}
+                        </div>
+                    </Col>
+                    <Col xs="4" className="ProfilePage-NotificationContainer">
+                        <div className="mt-4" id="notificationbar-container">
+                            <NotificationBar goToPage={goToPage} user={user}/>
+                            <UserInfoCard 
+                                user={user} 
+                                goToPage={goToPage} 
+                                token={token} 
+                                uploadPicture={uploadPicture} 
+                                profilePic={profilePic}
+                                setProfilePic={setProfilePic}
+                                getConnections={getConnections}
+                            />
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            </>
+        )
+    }
 }
 
 export default ProfilePage;

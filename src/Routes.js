@@ -7,7 +7,6 @@ import TravelJournal from "./Components/TravelJournal/TravelJournal";
 import LoginPage from "./Components/Login-Register/LoginPage";
 import SiteTitleComponent from "./Components/TitlePicture/SiteTitleComp";
 import RegisterPage from "./Components/Login-Register/RegisterPage";
-import titleImg from "./Images/RibbonWithText.png";
 import UserContext from "./helpers/UserContext";
 import Logout from "./Components/Login-Register/Logout";
 import MessagesPage from "./Components/Messages/MessagesPage";
@@ -16,11 +15,6 @@ import FollowPage from "./Components/FollowInfoPages/FollowPage";
 import FollowerPage from "./Components/FollowInfoPages/FollowerPage";
 
 
-const titleData = {
-    source:titleImg,
-    height:"850px",
-    width:"100%"
-}
 
 const Routes = () => {
     const history = useHistory();
@@ -41,7 +35,7 @@ const Routes = () => {
     return (
         <Switch>
                 <Route exact path="/">
-                    <SiteTitleComponent imgSourceData={titleData} />
+                    <SiteTitleComponent />
                     <HomePage user={user} token={token} />
                 </Route>
                 <Route exact path="/users/:userId/profile">
@@ -63,9 +57,7 @@ const Routes = () => {
                                     user={user}
                                     tripData={tripData}
                                     setTripData={setTripData}
-                                    token={token}
-                                     
-                                    
+                                    token={token}       
                     />
                 </Route>
                 <Route exact path="/users/:userId/messages">
@@ -81,14 +73,14 @@ const Routes = () => {
                     <FindUserPage user={user} token={token}  />
                 </Route>
                 <Route exact path="/login">
-                    <SiteTitleComponent imgSourceData={titleData}/>
+                    <SiteTitleComponent />
                     <LoginPage setUser={setUser} 
                             user={user} 
                             setToken={setToken}
                     /> 
                 </Route>
                 <Route exact path="/register">
-                    <SiteTitleComponent imgSourceData={titleData} />
+                    <SiteTitleComponent />
                     <RegisterPage user={user} setUser={setUser} setToken={setToken}/>
                 </Route>
                 <Route exact path="/logout">

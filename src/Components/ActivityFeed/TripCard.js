@@ -10,9 +10,10 @@ import {useState,useEffect} from "react";
 import {NodeApi} from "../../APIRequests/nodeApi";
 import {hasValue} from "../../helpers/helpers";
 import "./TripCard.css";
-
+import GetScreenSize from '../../helpers/GetScreenSize';
 
 function TripCard({user,trip,token}) {
+    const [screenWidth] = GetScreenSize();
     const [hasLiked,setHasLiked] = useState(false);
     const [likes,setLikes] = useState(trip.like_count);
     
@@ -55,8 +56,35 @@ function TripCard({user,trip,token}) {
                 <CardTitle tag="h2" className="text-center" id="tripcard-username">{trip.username.toUpperCase()}</CardTitle>
             </div>
             <CardBody className="TripCard-CardBody">
-                <Container fluid>
+                <Container fluid className="TripCard-AllRowsContainer">
+                {screenWidth <= 420 && 
+                    <>
                     <Row>
+                        <Col>
+                            <div className="TripCard-TripDetails">
+                                <CardSubtitle tag="h6" className="mb-2" id="tripcard-startAndStopHeader">
+                                    Trip From {trip.start_point.toUpperCase()} To {trip.end_point.toUpperCase()}
+                                </CardSubtitle>
+                                {trip.waypoint_names && 
+                                <ul className="TripCard-WaypointsList">
+                                    {trip.waypoint_names.map((name) => {
+                                        return <li>{name}</li>
+                                    })}
+                                </ul>
+                                }
+                            </div>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <div className="TripCard-TripImageContainer">
+                                <img id="tripcard-tripimg" width="100%" src={trip.photo.img_url} alt="Trip" />
+                            </div> 
+                        </Col>
+                    </Row>
+                    </>
+                }
+                   {screenWidth > 420 && <Row>
                         <Col >
                             <div className="TripCard-TripDetails">
                                 <CardSubtitle tag="h6" className="mb-2 text-muted">
@@ -76,7 +104,7 @@ function TripCard({user,trip,token}) {
                                 <img id="tripcard-tripimg" width="100%" src={trip.photo.img_url} alt="Trip" />
                             </div> 
                         </Col>
-                    </Row>    
+                    </Row> }   
                 </Container>
                 <div className="TripCard-LikeContainer mt-3">
                     <FontAwesomeIcon 

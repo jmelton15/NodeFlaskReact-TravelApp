@@ -4,8 +4,11 @@ import { NodeApi } from "../../APIRequests/nodeApi";
 import { useState } from "react";
 import ConnectionCard from "./ConnectionCard";
 import { Redirect } from "react-router-dom";
+import GetScreenSize from '../../helpers/GetScreenSize';
+
 
 const FindUserPage = ({user,token}) => {
+    const [screenWidth] = GetScreenSize();
     const [foundUser,setFoundUser] = useState(null);
 
     if(!token || !user) {
@@ -17,17 +20,30 @@ const FindUserPage = ({user,token}) => {
         console.log(foundUserData)
         if(foundUserData) setFoundUser(foundUserData);
     }
-
-    return (
-        <div className="container FindUserPage-MainContainer d-flex flex-column">
+    if(screenWidth <= 600) {
+        return (
+            <div className="FindUserPage-MainContainer">
             <div>
                 <FindUserForm findUser={findUser} user={user}/>
             </div>
-            <div className="container-sm w-50">
+            <div className="d-flex justify-content-center mx-3 mt-3">
             {foundUser && <ConnectionCard connection={foundUser} user={user} token={token}/>}
             </div>
         </div>
-    )
+        )
+    }
+    else {
+        return (
+            <div className="container FindUserPage-MainContainer d-flex flex-column">
+                <div>
+                    <FindUserForm findUser={findUser} user={user}/>
+                </div>
+                <div className="container-sm w-50">
+                {foundUser && <ConnectionCard connection={foundUser} user={user} token={token}/>}
+                </div>
+            </div>
+        )
+    }
 }
 
 export default FindUserPage;

@@ -29,3 +29,19 @@
     border-radius: 15px;
     padding: 10px;
 }
+
+
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+    .Message {
+        margin-top: 15px !important;
+    }
+    .Message-Text-Other {
+        max-width: 150px;
+        overflow-wrap: break-word;
+    }
+    
+    .Message-Text-Own {
+        max-width: 150px;
+        overflow-wrap: break-word;
+    }
+}

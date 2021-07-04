@@ -14,3 +14,12 @@
 #createtrippage-helpIcon:hover {
     cursor: pointer;
 }
+
+
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+    .MapComp-MapContainer {
+        box-shadow: 5px 5px 20px 15px;
+        border:2px solid black;
+        border-radius: 30px !important;
+    }
+}

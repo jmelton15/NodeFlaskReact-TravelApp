@@ -3,7 +3,6 @@
     border-radius: 20px !important;
 }
 
-
 .TripCard-TripDetails{
     overflow-y:scroll;
     max-height: 300px ;
@@ -37,4 +36,22 @@
 
 #tripcard-likecountbadge {
     color:black;
+}
+
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+    .TripCard-AllRowsContainer {
+        padding:0px !important;
+    }
+
+    .TripCard-TripDetails{
+        max-height: 250px ;
+    }
+
+    #tripcard-username {
+        right:35%;
+    }   
+
+    #tripcard-startAndStopHeader {
+        text-decoration: underline;
+    }
 }

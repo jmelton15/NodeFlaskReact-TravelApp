@@ -15,7 +15,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash,faMap,faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
 import { ErrorBoundary } from "../Errors/ErrorBoundary";
 import {v4 as uuid} from "uuid";
-
+import GetScreenSize from '../../helpers/GetScreenSize';
 
 //******************************************************************************* */
 /// INDIVIDUAL PAGE CODE
@@ -80,7 +80,7 @@ const Page = forwardRef((props, ref) => {
                         {props.trip && <FontAwesomeIcon 
                                             icon={faMapMarkedAlt} 
                                             className="mb-3" 
-                                            size="4x" 
+                                            size={props.screenWidth > 600 ? "4x" : "2x"} 
                                             id="traveljournal-remakeTripBtn" 
                                             color="#5F9EA0"
                                             onClick={() => props.remakeTripOnMap(props.trip)}
@@ -102,7 +102,8 @@ const Page = forwardRef((props, ref) => {
 //******************************************************************************* */
 const TravelJournal = ({markers,tripData,setTripData,user,token,remakeTripOnMap}) => {
     const book = useRef();
-
+    const [screenWidth] = GetScreenSize();
+    
     async function loadSavedTrips(cancelAxiosToken) {
         let savedTrips = await FlaskApi.getTrips(user.user_id,cancelAxiosToken);
         setTripData(savedTrips);
@@ -126,8 +127,8 @@ const TravelJournal = ({markers,tripData,setTripData,user,token,remakeTripOnMap}
         <div className="container-fluid d-flex justify-content-center mt-4">
             <ErrorBoundary>
                 <HTMLFlipBook 
-                    width={500} 
-                    height={800} 
+                    width={screenWidth > 420 ? 500 : 400} 
+                    height={screenWidth > 420 ? 800 : 630} 
                     ref={book}
                     showCover={true}
                 >
@@ -141,6 +142,7 @@ const TravelJournal = ({markers,tripData,setTripData,user,token,remakeTripOnMap}
                                 user={user}
                                 loadSavedTrips={loadSavedTrips}
                                 remakeTripOnMap={remakeTripOnMap}
+                                screenWidth={screenWidth}
                     >
                     </Page>
                 })}

@@ -17,7 +17,6 @@ body {
     margin-top:25px;
     box-shadow: 5px 5px 30px 15px;
     border-radius: 20px;
-
 }
 
 #activityFeedHeader {
@@ -53,7 +52,12 @@ body {
     width:100% !important;
 }
 
-/* .EditProfileForm {
-    position: absolute;
-    left: 75%;
-} */
+
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+    .activityFeedContainer {
+        width:100%;
+    }
+    .activityFeedContainer {
+        overflow-y:scroll !important;
+    }
+}

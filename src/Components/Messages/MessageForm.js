@@ -3,13 +3,14 @@ import {Form,FormGroup,Input,Button,Collapse,Tooltip} from "reactstrap";
 import Picker from "emoji-picker-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSmile} from "@fortawesome/free-solid-svg-icons";
+import GetScreenSize from '../../helpers/GetScreenSize';
 
 const MessageForm = ({sendMsg}) => {
 
     const initialState = {
         message:""
     }
-
+    const [screenWidth] = GetScreenSize();
     const [formData,setFormData] = useState(initialState);
     const [chosenEmoji, setChosenEmoji] = useState(null);
     const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +38,7 @@ const MessageForm = ({sendMsg}) => {
 
     return (
         <>
-        <div className="MessagePage-EmojiCollapse mx-3">
+        {screenWidth > 600 && <div className="MessagePage-EmojiCollapse mx-3">
             <FontAwesomeIcon icon={faSmile} onClick={toggleEmojis} id="messagepage-emojiToggler"/>
             <Tooltip toggle={toggleEmojiTooltip} isOpen={tooltipOpen} target="messagepage-emojiToggler">Click To Add Emojis!</Tooltip>
             <Collapse isOpen={isOpen}>
@@ -45,7 +46,7 @@ const MessageForm = ({sendMsg}) => {
                     {isOpen &&<Picker onEmojiClick={onEmojiClick} />}
                 </div>
             </Collapse>
-        </div>
+        </div>}
         <Form className="MessagePage-ChatForm" onSubmit={handleSubmit}>
             <FormGroup className="MessagePage-ChatBox">
                 <Input 
@@ -56,7 +57,7 @@ const MessageForm = ({sendMsg}) => {
                     value={formData.message}
                     onChange={handleChange}
                 ></Input>
-                <Button className="btn-lg" id="messageSubmitBtn">Send</Button>
+                <Button className={screenWidth > 600 ? "btn-lg" : ""} id="messageSubmitBtn">Send</Button>
             </FormGroup>
         </Form>
         

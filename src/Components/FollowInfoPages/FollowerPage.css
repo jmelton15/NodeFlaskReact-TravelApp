@@ -1,4 +1,12 @@
 .FollowerPage-ConnectionsListContainer {
     margin-top: 20px;
     width:40% !important;
+}
+
+  
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+  .FollowerPage-ConnectionsListContainer {
+    margin-top: 20px;
+    width:100% !important;
   }
+}

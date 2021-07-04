@@ -30,7 +30,10 @@
     display: flex;
     flex-direction: column;
 }
-
+.TravelJournal-TripWaypointsContainer {
+    overflow-y: scroll !important;
+    max-height: 250px;
+}
 .TravelJournal-TripTitleContainer {
     display:flex;
     justify-content: space-between;
@@ -79,4 +82,16 @@
 
  #travlejournal-placelink {
      text-decoration: none;
+ }
+
+ @media only screen and (min-device-width: 400px) and (max-device-width: 600px) {
+    .TravelJournal-PageNumberContainer {
+        align-items: center;
+    }
+    .TravelJournal-TripWaypointsContainer {
+        max-height: 150px;
+    }
+    #traveljournal-triptitle {
+        font-size: 17px;
+    }
  }

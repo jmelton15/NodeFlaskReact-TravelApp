@@ -1,8 +1,11 @@
 import {useState} from "react";
 import {Form,FormGroup,Input,Button} from "reactstrap";
 import "./FindUserForm.css";
+import GetScreenSize from '../../helpers/GetScreenSize';
 
 const FindUserForm = ({findUser,user}) => {
+    const [screenWidth] = GetScreenSize();
+
     const initialState = {
         username:""
     }
@@ -36,7 +39,7 @@ const FindUserForm = ({findUser,user}) => {
                     value={formData.username}
                     onChange={handleChange}
                 ></Input>
-                <Button id="findUserBtn" className="mt-2 btn-lg">Find</Button>
+                <Button id="findUserBtn" className={screenWidth > 600 ? "mt-2 btn-lg" : "mt-2"}>Find</Button>
             </FormGroup>
         </Form>
     )

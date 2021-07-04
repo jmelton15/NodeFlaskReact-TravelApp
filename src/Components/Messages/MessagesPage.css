@@ -6,6 +6,7 @@
 .MessagesPage-MessageCol {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .MessagesPage-MessageContainer {
@@ -95,3 +96,60 @@
 }
 
 
+@media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
+    .Conversation {
+        margin-top: 0px !important;
+    }
+    .MessagesPage-ConversationsCol {
+        justify-content: center;
+    }
+    .MessagesPage-ConverstaionContainer {
+        height:100%;
+        width:100%;
+        margin-top:3px;
+    }
+    .MessagesPage-MessageContainer {
+        height:400px;
+        width:100%;
+        background-color: white;
+        margin-top:25px;
+        box-shadow: 5px 5px 30px 15px;
+        border-radius: 20px;
+    }
+    .MessagePage-ChatBox {
+        justify-content: flex-end;
+    }
+    .MessagesPage-MobileConvoScroller {
+        display: flex;
+        overflow-x: scroll;
+    }
+    #messagepage-currentChatHeader {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height:50px;
+       margin-bottom: 0px;
+       background-color: #E97451;
+       border-radius: 10px;
+       font-family: "AestheticViolet";
+    }
+    .MessagePage-ChatForm {
+        height:125px;
+    }
+    
+    #messagepage-chattingWithHeader {
+        font-weight: bold;
+        text-decoration: underline dotted;
+    }
+    #messageSubmitBtn {
+        background-color:#50C878;
+        color:black;
+    }
+    #messageInput {
+        width:100%;
+        height: 120px;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+    
+}

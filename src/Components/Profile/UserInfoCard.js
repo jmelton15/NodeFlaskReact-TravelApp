@@ -33,7 +33,7 @@ const UserInfoCard = ({user,goToPage,profilePic,uploadPicture,getConnections,tok
     return (
         <div className="UserInfoCard-CardContainer">
             <Card className="UserInfoCard-Card">
-                <CardImg top width="100%" src={profilePic} alt="Profile" />
+                <CardImg top width="100%" src={profilePic} alt="Profile" id="userinfocard-profilePic"/>
                 <CardBody>
                     <div id="userinfocard-usernameBio">
                         <div className="d-flex justify-content-center">
