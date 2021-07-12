@@ -4,6 +4,7 @@
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
+      <a href="server-and-hosting">About The Servers and Hosting </a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
@@ -23,6 +24,8 @@
 
 ### Capstone Project 2 - DTRI (Down To the Route of It) Refactored!
 ### This Is The React.js Frontend Part of Capstone 2
+
+Fun Details about the servers and hosting can be found at the link above labeled "About Servers and Hosting"
 
 This project is an expansion upon my first capstone project using what I learned about React and Node as well as self-taught learning from documentation online. The first capstone was done soley using Pythong-Flask combo. This capstone project is now done using Python/Flask, Node/Express, and React as well as a server (in node) using Socket.io that I used for a live messaging feature. The ReadMe files for the backends of the project are provide in my Github repository (they are labeled accordingly).
 This README, as you probably know, corresponds to the frontend React part of the project. However, I will discuss how the entire application works below.
@@ -68,6 +71,12 @@ in order to prevent making too many requests to Google since it is not a free AP
 ## Data Storage And Safety
 
 Passwords from users are encrypted with a well-trusted encryption algorithm, not one that I made on my own.
+
+<!-- SERVER AND HOSTING -->
+## Server and Hosting Situation
+
+As a side project, I decided to learn Nginx as well as linux (up until this point I have only worked on Windows OS).
+With this new learning, I launched my frontend through Nginx on a linux Virtual Machine.
 
 <!-- CONTACT -->
 ## Contact
