@@ -10,17 +10,9 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li><a href="#data-storage-and-safety">Data Storage And Safety</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
 
@@ -32,11 +24,30 @@
 ### Capstone Project 2 - DTRI (Down To the Route of It) Refactored!
 ### This Is The React.js Frontend Part of Capstone 2
 
-About Frontend Project Will Go Here ....
+This project is an expansion upon my first capstone project using what I learned about React and Node as well as self-taught learning from documentation online. The first capstone was done soley using Pythong-Flask combo. This capstone project is now done using Python/Flask, Node/Express, and React as well as a server (in node) using Socket.io that I used for a live messaging feature. The ReadMe files for the backends of the project are provide in my Github repository (they are labeled accordingly).
+This README, as you probably know, corresponds to the frontend React part of the project. However, I will discuss how the entire application works below.
+
+The concept behind my application is to create a social community for anyone that likes to travel, but doesn't really want to spend a ton of time searching the web for the best places along a route on their trip. My app allows users to connect (follow each other) as well as live message each other to check in. On a user's profile is an activty feed that will display the recent activity of their connections in which the user can like and unlike. This allows trips that other people have created to be viewed as a source of curiosity as to what trips to take next! Users can upload their own picture file as their profile image as well. When a user is ready to "plan" a trip or create a trip, they can head over the the Create A Trip page. From there the user can type in start and stop locations as well as waypoints or Points Of Interest (i.e. Parks, Museums, Arcades, Burgers, Rest Stops, Gas Stations, etc.) and the region (country) they are traveling in. My app will proceed to find top rated places in each Point of Interest at calculated stops along the route. Once created, the user can save the trip. All of the users saved trips will appear in their own flip-able Travel Journal where the user can see all the found locations organized by Point Of Interest with links to each place on the web and a customized photo that corresponds to one of the places on their trip. On each page is an icon that allows the user to bring their trip back up on the map with markers to view.
+
+Despite being up and running, this application will continue to be worked on. Any feedback, tips, ideas, or even bugs that you may find while trying it out,
+please let me know!
+
+QUICK NOTE TO USERS - > there is a good chance that I will have to take my app offline for a period of time as I work to try and find ways to afford the costs of running it fulltime.
 
 ### Future Plans
- Need to Add Plans Here .....
+ Future plans involve:
+1.) Ways to monetize the site for fulltime running
+2.) A customizeable itinerary add-on to the travel journal where users can add their own notes about a trip and photos
+3.) Smarter search algorithms that allow for creating trips based soley on common trips from internal users
+4.) A mobile app to go along with the web app, which will make the live messaging feature much more user friendly
+5.) update notifications about the site status and updating users if they have a new message from someone
 
+## Reasons Behind API Choice
+I opted to use Google Maps as my mapping API because of their nearby_places integration and depth. I have limited the number of trips users can make 
+in order to prevent making too many requests to Google since it is not a free API to use.
+
+
+<!-- BUILT WITH -->
 ### Built With - Credits To The Following:
 
 * [React.js](https://reactjs.org/)
@@ -49,24 +60,14 @@ About Frontend Project Will Go Here ....
 * [St Page Flip](https://nodlik.github.io/StPageFlip/)
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
-
-How To use App Goes Here.....
-
-## Reasons Behind API Choice and Site Ideas
-
-I opted to use Google Maps as my mapping API because of their nearby_places integration and depth. I have limited the number of trips users can make 
-in order to prevent making too many requests to Google since it can become a non-free entity at that point. 
-
-I added in the travel journal idea because my goal is for this app to be a social place for travelers and to maybe promote traveling around more! I would like to include a phone authentication service to allow a secure way to store travel documents and things 
+ For how to use the app, got to the "About The Site" link on the navigation bar of the web app
 
 <!-- DATA STORAGE AND SAFETY -->
 ## Data Storage And Safety
 
-Everything that is stored to be used later is encrypted and secured while stored. This includes anything from password,email,travel forms, to all the locations from your trips. Decoding alogorithms are in places to bring back the stored data to be used
-on the client side when asked by that specific user. I may have went a little overboard with the encryption even, but it was fun to learn and good practice! However, I may get rid of the encrypting of the locations from trips as that takes time and may not be needed since registered users can see these anyways.
+Passwords from users are encrypted with a well-trusted encryption algorithm, not one that I made on my own.
 
 <!-- CONTACT -->
 ## Contact
