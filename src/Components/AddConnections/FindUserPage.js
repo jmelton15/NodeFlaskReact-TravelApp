@@ -4,21 +4,21 @@ import { NodeApi } from "../../APIRequests/nodeApi";
 import { useState } from "react";
 import ConnectionCard from "./ConnectionCard";
 import { Redirect } from "react-router-dom";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 
 const FindUserPage = ({user,token}) => {
-    const [screenWidth] = GetScreenSize();
-    const [foundUser,setFoundUser] = useState(null);
+    const [screenWidth] = GetScreenWidth();
+    const [foundUsers,setFoundUsers] = useState();
 
     if(!token || !user) {
         return <Redirect to="/"></Redirect>
     }
     
     const findUser = async (formData) => {
-        let foundUserData = await NodeApi.findUser(formData.username,token);
-        console.log(foundUserData)
-        if(foundUserData) setFoundUser(foundUserData);
+        let foundUsersData = await NodeApi.findUser(formData.username,token);
+        console.log(foundUsersData)
+        if(foundUsersData) setFoundUsers(foundUsersData);
     }
     if(screenWidth <= 600) {
         return (
@@ -27,7 +27,9 @@ const FindUserPage = ({user,token}) => {
                 <FindUserForm findUser={findUser} user={user}/>
             </div>
             <div className="d-flex justify-content-center mx-3 mt-3">
-            {foundUser && <ConnectionCard connection={foundUser} user={user} token={token}/>}
+            {foundUsers && foundUsers.map((connection) => {
+                return <ConnectionCard connection={connection} user={user} token={token}/>
+            })}
             </div>
         </div>
         )
@@ -39,7 +41,9 @@ const FindUserPage = ({user,token}) => {
                     <FindUserForm findUser={findUser} user={user}/>
                 </div>
                 <div className="container-sm w-50">
-                {foundUser && <ConnectionCard connection={foundUser} user={user} token={token}/>}
+                {foundUsers && foundUsers.map((connection) => {
+                    return <ConnectionCard connection={connection} user={user} token={token}/>
+                })}
                 </div>
             </div>
         )

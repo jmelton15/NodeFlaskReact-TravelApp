@@ -1,10 +1,10 @@
 import {useState} from "react";
 import {Form,FormGroup,Input,Button} from "reactstrap";
 import "./FindUserForm.css";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const FindUserForm = ({findUser,user}) => {
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
 
     const initialState = {
         username:""

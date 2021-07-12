@@ -1,14 +1,14 @@
 import "./FollowPage.css";
 import ConnectionCard from "../AddConnections/ConnectionCard";
 import { Redirect } from "react-router-dom";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const FollowPage = ({user,token}) => {
     if(!token || !user) {
         return <Redirect to="/"></Redirect>
     }
 
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
     return (
         <div className={screenWidth > 600 ? "FollowPage-ConnectionsListContainer container" : "FollowPage-ConnectionsListContainer px-3"}>
             {user.following.map((connection) => {

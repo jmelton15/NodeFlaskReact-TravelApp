@@ -2,10 +2,10 @@ import "./NotificationBar.css";
 import { useState } from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCommentAlt,faUser,faUserPlus} from "@fortawesome/free-solid-svg-icons";
-import { Badge, Collapse, Button, CardBody, Card  } from 'reactstrap';
+import { Badge} from 'reactstrap';
 
 
-const NotificationBar = ({messages,goToPage,user}) => {
+const NotificationBar = ({goToPage,user}) => {
     return (
     <div className="container-fluid NotificationBar-Container">
       <div className="d-flex align-items-center NotificationBar-MessageIconContainer" onClick={()=>goToPage(`users/${user.user_id}/messages`)}>

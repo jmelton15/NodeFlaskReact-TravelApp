@@ -1,9 +1,9 @@
 import sampleImg from "../../Images/fernTable.jpg";
 import "./Conversation.css";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const Conversation = ({connection,getMessages}) => {
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
 
     return (
         <div className="Conversation" onClick={() => getMessages(connection.user_id,connection.username.toUpperCase())}>

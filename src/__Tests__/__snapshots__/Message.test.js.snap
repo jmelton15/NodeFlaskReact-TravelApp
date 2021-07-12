@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for Message 1`] = `
+<DocumentFragment>
+  <div
+    class="Message other"
+    data-testid="messageOwnership"
+  >
+    <img
+      alt="Avatar Pic"
+      class="Message-AvatarPic"
+      src="some pic route"
+    />
+    <div
+      id="message-body"
+    >
+      <p
+        class="Message-Text-Other"
+        id="message-text"
+      >
+        Hello From Test1
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

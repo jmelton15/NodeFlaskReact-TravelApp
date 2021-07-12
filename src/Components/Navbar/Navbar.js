@@ -21,7 +21,7 @@ const NavBar = ({user,userId}) => {
     const toggle = () => setIsOpen(!isOpen);
 
     const linkOptions = {
-      loggedOut: [["Register","Register"],["Login","Login"]],
+      loggedOut: [["About The Site","About"],["Register","Register"],["Login","Login"]],
       loggedIn: [["About The Site","About"],["Create Trip",`users/${user.user_id}/trip`],
                 ["Travel Journal",`users/${user.user_id}/traveljournal`],["Profile",`users/${user.user_id}/profile`],["Logout","Logout"]]
     }

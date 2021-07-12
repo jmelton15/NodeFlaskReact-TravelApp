@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for ConnectionCard 1`] = `
+<DocumentFragment>
+  <div
+    class="ConnectionCard-Card card"
+  >
+    <img
+      alt="Avatar Profile Pic"
+      class="card-img"
+      id="connectioncard-avatarimg"
+      src="some pic route"
+    />
+    <div
+      class="card-body"
+    >
+      <div
+        id="connectioncard-usernameBio"
+      >
+        <h1
+          class="text-center card-title"
+          id="userinfocard-username"
+        >
+          TESTCONN
+        </h1>
+        <h6
+          class="mb-2 text-muted card-subtitle"
+        >
+          Connection To Test1
+        </h6>
+      </div>
+      <p
+        class="card-text"
+        id="connectioncard-followingInfo"
+      />
+      <p
+        id="connectioncard-followers"
+      >
+        <span>
+          Followers:
+        </span>
+         1
+      </p>
+      <p
+        id="connectioncard-following"
+      >
+        <span>
+          Following:
+        </span>
+         1
+      </p>
+      <p />
+    </div>
+    <div
+      class="ConnectionCard-ButtonContainer"
+    >
+      <blockquote
+        id="alreadyFollowing"
+      >
+        (Already Following)
+      </blockquote>
+      <button
+        class="btn btn-secondary"
+        id="connectioncard-followbtn"
+        type="button"
+      >
+        UnFollow
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

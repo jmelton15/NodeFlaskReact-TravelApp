@@ -1,10 +1,10 @@
 import mobileImg from "../../Images/RibbonForCapstoneMobile.png";
 import desktopImg from "../../Images/RibbonWithText.png";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 
 const SiteTitleComponent = () => {
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
 
     let imgSpecs = screenWidth > 420 ? {source:desktopImg,width:"100%",height:"850px"} : {source:mobileImg,width:"100%",height:"150px"} 
 

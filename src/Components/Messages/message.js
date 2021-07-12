@@ -8,10 +8,8 @@ const Message = ({message,currentUser}) => {
         msgOwnership = "Message own";
     }
 
-
-
     return (
-        <div className={msgOwnership}>
+        <div className={msgOwnership} data-testid="messageOwnership">
             <img className="Message-AvatarPic" src={message.fromUserAvatar} alt="Avatar Pic"/>
             <div id="message-body">
                 <p className={msgTxtOwnership} id="message-text">{message.msgTxt}</p>

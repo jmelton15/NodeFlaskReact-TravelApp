@@ -3,14 +3,14 @@ import {Form,FormGroup,Input,Button,Collapse,Tooltip} from "reactstrap";
 import Picker from "emoji-picker-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSmile} from "@fortawesome/free-solid-svg-icons";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const MessageForm = ({sendMsg}) => {
 
     const initialState = {
         message:""
     }
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
     const [formData,setFormData] = useState(initialState);
     const [chosenEmoji, setChosenEmoji] = useState(null);
     const [isOpen, setIsOpen] = useState(false);

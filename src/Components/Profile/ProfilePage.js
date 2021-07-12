@@ -7,11 +7,11 @@ import axios from "axios";
 import NotificationBar from "./NotificationBar";
 import { Redirect, useHistory } from "react-router-dom";
 import UserInfoCard from "./UserInfoCard";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 
 const ProfilePage = ({user,setUser,token}) => {
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
 
     const [connectionsTrips,setConnectionsTrips] = useState([]);
     const history = useHistory();

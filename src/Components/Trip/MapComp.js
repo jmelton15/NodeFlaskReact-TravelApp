@@ -1,17 +1,14 @@
 import "./MapComp.css";
-import ScriptTag from 'react-script-tag';
 import {GoogleMap, LoadScript, Marker, InfoWindow,MarkerClusterer} from '@react-google-maps/api';
-import { useEffect, useState } from 'react';
-import {Button} from "reactstrap";
+import { useState } from 'react';
 import {v4 as uuid} from "uuid";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
-const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
-    const [screenWidth] = GetScreenSize();
-
+const MapContainer = ({markers,tripObject,defaultCenter,setDefaultCenter,defaultZoom}) => {
+    const [screenWidth] = GetScreenWidth();
     const [selected,setSelected] = useState({});
-   
-    const [defaultZoom,setDefaultZoom] = useState(4);
+    
+    console.log(tripObject);
 
     const onSelect = (item) => {
         setSelected(item);
@@ -38,7 +35,7 @@ const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
       borderRadius:"30px"
     }
     
-    
+
     let markerCenter = markers !== [] ? 4 : markers[0].position;
 
 
@@ -49,18 +46,18 @@ const MapContainer = ({markers,defaultCenter,setDefaultCenter}) => {
             mapContainerStyle={mapStyles}
             zoom={defaultZoom}
             center={defaultCenter}>
-            <MarkerClusterer options={clustererOptions} >
-              {(clusterer) => markers !== [] &&
-                markers.map((item) => {
+            {markers.length > 0 && <MarkerClusterer options={clustererOptions} >
+              {(clusterer) => 
+                markers.map((place) => {
                   return <Marker 
-                        onClick={() => onSelect(item)}
-                        key={uuid()} 
-                        position={item.position} 
-                        clusterer={clusterer}
-                        onLoad={setDefaultCenter(item.position)}
-                  />
+                            onClick={() => onSelect(place)}
+                            key={uuid()} 
+                            position={place.position} 
+                            clusterer={clusterer}
+                            onLoad={setDefaultCenter(place.position)}
+                          />
                 })}
-            </MarkerClusterer>
+            </MarkerClusterer>}
          {selected.position && 
             (
               <InfoWindow

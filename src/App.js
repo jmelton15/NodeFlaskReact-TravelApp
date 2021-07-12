@@ -10,7 +10,7 @@ function App() {
   const [user,setUser] = LocalStorageState("currentUser",{});
   const [token,setToken] = LocalStorageState("token",null);
  
-  const [markers,setMarkers] = LocalStorageState("markers",[]);
+  const [markers,setMarkers] = LocalStorageState("markers",{});
 
   const [tripData,setTripData] = LocalStorageState("tripData",[])
 

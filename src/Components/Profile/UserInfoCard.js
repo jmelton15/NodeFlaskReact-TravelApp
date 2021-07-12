@@ -9,6 +9,7 @@ import {faBook,faEdit} from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import BioUpdateForm from "./BioUpdateForm";
 import {NodeApi} from "../../APIRequests/nodeApi";
+import testAvatar from "../../Images/default_avatar.jpg"
 
 const UserInfoCard = ({user,goToPage,profilePic,uploadPicture,getConnections,token}) => {
     const [bio,setBio] = useState(user.bio);
@@ -33,7 +34,7 @@ const UserInfoCard = ({user,goToPage,profilePic,uploadPicture,getConnections,tok
     return (
         <div className="UserInfoCard-CardContainer">
             <Card className="UserInfoCard-Card">
-                <CardImg top width="100%" src={profilePic} alt="Profile" id="userinfocard-profilePic"/>
+                <CardImg top width="100%" src={testAvatar} alt="Profile" id="userinfocard-profilePic"/>
                 <CardBody>
                     <div id="userinfocard-usernameBio">
                         <div className="d-flex justify-content-center">

@@ -5,7 +5,7 @@
 
 .TripCard-TripDetails{
     overflow-y:scroll;
-    max-height: 300px ;
+    max-height: 250px ;
 }
 
 #tripcard-tripimg {

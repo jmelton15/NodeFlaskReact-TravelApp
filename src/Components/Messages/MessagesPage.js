@@ -7,7 +7,7 @@ import Message from "./message";
 import MessageForm from "./MessageForm";
 import { NodeApi } from "../../APIRequests/nodeApi";
 import Conversation from "../Conversations/Conversation";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const MessagesPage = ({user,token}) => { 
     const socket = useRef();
@@ -16,7 +16,7 @@ const MessagesPage = ({user,token}) => {
     const [toUser,setToUser] = useState(null);
     const [toUsername,setToUsername] = useState("")
     const [socketMessage,setSocketMessage] = useState(null);
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
 /******************************************************************************* */
     /**** WebSocket useEffect Code  ****/
     useEffect(() => {

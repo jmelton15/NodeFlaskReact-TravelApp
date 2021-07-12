@@ -13,8 +13,8 @@ import MessagesPage from "./Components/Messages/MessagesPage";
 import FindUserPage from "./Components/AddConnections/FindUserPage";
 import FollowPage from "./Components/FollowInfoPages/FollowPage";
 import FollowerPage from "./Components/FollowInfoPages/FollowerPage";
-
-
+import AboutPage from "./Components/AboutPage/About";
+import { iterateOverPlaces } from "./helpers/helpers";
 
 const Routes = () => {
     const history = useHistory();
@@ -28,7 +28,8 @@ const Routes = () => {
     const remakeTripOnMap = (tripData) => {
         const markerData = JSON.parse(tripData.marker_data);
         console.log(markerData);
-        setMarkers(markerData);
+        setMarkers(iterateOverPlaces(markerData))
+        // setMarkers(markerData);
         GoToPage(`users/${user.user_id}/trip`);
     }
 
@@ -90,6 +91,9 @@ const Routes = () => {
                             setToken={setToken}
                             
                     />
+                </Route>
+                <Route exact path="/about">
+                    <AboutPage />
                 </Route>
                 <Redirect to="/"></Redirect>
            

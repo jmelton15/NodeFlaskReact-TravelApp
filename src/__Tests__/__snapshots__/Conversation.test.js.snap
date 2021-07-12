@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for Conversation 1`] = `
+<DocumentFragment>
+  <div
+    class="Conversation"
+  >
+    <img
+      alt="Avatar Pic"
+      class="Conversation-AvatarPic"
+      src="some pic route"
+    />
+    <div
+      id="message-body"
+    >
+      <h5>
+        TESTCONN
+      </h5>
+    </div>
+  </div>
+</DocumentFragment>
+`;

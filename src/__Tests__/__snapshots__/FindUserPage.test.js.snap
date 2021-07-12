@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match snapshot for FindUserPage 1`] = `
+<DocumentFragment>
+  <div
+    class="container FindUserPage-MainContainer d-flex flex-column"
+  >
+    <div>
+      <form
+        class="FindUserForm"
+      >
+        <div
+          class="FindUserForm-FindUserFormGroup form-group"
+        >
+          <input
+            class="form-control"
+            id="username-searchbox"
+            name="username"
+            placeholder="Type Username To Find User..."
+            type="text"
+            value=""
+          />
+          <button
+            class="mt-2 btn-lg btn btn-secondary"
+            id="findUserBtn"
+          >
+            Find
+          </button>
+        </div>
+      </form>
+    </div>
+    <div
+      class="container-sm w-50"
+    />
+  </div>
+</DocumentFragment>
+`;

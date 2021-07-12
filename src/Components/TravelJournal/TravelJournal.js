@@ -7,7 +7,7 @@ import {
     Card, CardImg, CardBody,
     CardTitle, CardSubtitle, 
     Button,Tooltip
-  } from 'reactstrap';
+  } from "reactstrap";
 import defaultImg from "../../Images/default_trip.jpg"
 import axios from "axios";
 import { useState } from "react";
@@ -15,8 +15,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash,faMap,faMapMarkedAlt} from "@fortawesome/free-solid-svg-icons";
 import { ErrorBoundary } from "../Errors/ErrorBoundary";
 import {v4 as uuid} from "uuid";
-import GetScreenSize from '../../helpers/GetScreenSize';
-
+import GetScreenWidth from "../../helpers/GetScreenWidth";
+import GetScreenHeight from "../../helpers/GetScreenHeight";
 //******************************************************************************* */
 /// INDIVIDUAL PAGE CODE
 // props.trip = {id,start_point,end_point,waypoint_names,waypoint_addresses,waypoint_coords,photo,user_id}
@@ -46,7 +46,7 @@ const Page = forwardRef((props, ref) => {
                 {props.trip && <CardImg id="page-tripPic"
                     width="100%" 
                     src={JSON.parse(props.trip.photo).img_url} 
-                    alt="Card image cap" 
+                    alt="Trip" 
                 />}
                 <div className="TravelJournal-AttributionContainer">
                     {props.trip && 
@@ -61,8 +61,23 @@ const Page = forwardRef((props, ref) => {
                         {props.trip && <Tooltip toggle={toggleTrashToolTip} isOpen={trashTTOpen} target="traveljournal-trashIcon">Delete Trip?</Tooltip>}
                     </div>
                     <div className="TravelJournal-TripWaypointsContainer">
-                        <ul>
-                        {props.trip && props.names.map((name,i) => {
+                        {props.trip && Object.keys(JSON.parse(props.trip.marker_data)).map((place) => {
+                           return(<div>
+                                   <div><h6><u>{place}</u></h6></div>
+                                    {JSON.parse(props.trip.marker_data)[place].map((location) => {
+                                       return <div><ul>
+                                            <li key={uuid()} id="traveljournal-waypointlist">
+                                                <a href={location.web_url}target="_blank" rel="noopener noreferrer" id="travlejournal-placelink">{location.name}</a>
+                                            </li>
+                                        </ul> </div>
+                                    })}
+                                  </div>
+                            ) 
+                        })
+                        
+                        }
+                        {/* <ul>
+                        {props.trip && props.names.map((name,i) => { 
                             return <li key={uuid()} id="traveljournal-waypointlist">
                                       <a href={JSON.parse(props.trip.marker_data)[i].web_url} 
                                          target="_blank" rel="noopener noreferrer" 
@@ -71,7 +86,7 @@ const Page = forwardRef((props, ref) => {
                                       </a>
                                    </li>
                         })} 
-                        </ul>
+                        </ul> */}
                     </div>
                 </CardBody>}
                 </Card>
@@ -102,13 +117,23 @@ const Page = forwardRef((props, ref) => {
 //******************************************************************************* */
 const TravelJournal = ({markers,tripData,setTripData,user,token,remakeTripOnMap}) => {
     const book = useRef();
-    const [screenWidth] = GetScreenSize();
-    
+    const [screenWidth] = GetScreenWidth();
+    const [screenHeight] = GetScreenHeight();
+
+    let bookHeight = 800;
+    let bookWidth = 500;
+
+    if(screenHeight < 800) bookHeight = 630;
+    if(screenHeight > 1100) bookHeight = 1000;
+    if(screenHeight > 800 && screenHeight < 1100) bookHeight = 800;
+
+    if(screenWidth < 420) bookWidth = 400;
+    if(screenWidth > 2000) bookWidth = 800;
+
     async function loadSavedTrips(cancelAxiosToken) {
         let savedTrips = await FlaskApi.getTrips(user.user_id,cancelAxiosToken);
         setTripData(savedTrips);
     }
-
     useEffect(() => {
         const cancelAxios = axios.CancelToken.source();
        
@@ -127,8 +152,8 @@ const TravelJournal = ({markers,tripData,setTripData,user,token,remakeTripOnMap}
         <div className="container-fluid d-flex justify-content-center mt-4">
             <ErrorBoundary>
                 <HTMLFlipBook 
-                    width={screenWidth > 420 ? 500 : 400} 
-                    height={screenWidth > 420 ? 800 : 630} 
+                    width={bookWidth} 
+                    height={bookHeight} 
                     ref={book}
                     showCover={true}
                 >

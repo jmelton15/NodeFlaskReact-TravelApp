@@ -3,7 +3,7 @@ import {Form,FormGroup,Button,Input,Card,CardBody,CardImg,Tooltip} from "reactst
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faQuestionCircle} from "@fortawesome/free-regular-svg-icons";
 
-const TripOptionsForm = ({createTrip,hasCreated,setHasCreated,resetMap,toggleHelp,setShowHelp}) => {
+const TripOptionsForm = ({createTrip,hasCreated,setHasCreated,resetMap,toggleHelp}) => {
     const [helpTTOpen, setHelpTTOpen] = useState(false);
     const toggleHelpToolTip = () => setHelpTTOpen(!helpTTOpen);
     

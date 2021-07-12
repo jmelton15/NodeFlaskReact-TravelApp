@@ -11,9 +11,32 @@
     padding: 3px;
 }
 
+.CreateTripPage-SpinnerContainer {
+    position:absolute;
+    z-index: 7;
+    right:50%;
+    left:50%;
+    bottom:50%;
+}
+
+#createtrippage-loadingText {
+    position:absolute;
+    z-index: 7;
+    width:50%;
+    background-color: #E97451;
+    border-radius: 20px;
+    padding: 10px;
+    right:20%;
+    bottom:70%;
+    font-family: "AestheticViolet";
+    font-weight: bold;
+    text-align: center;
+}
+
 #createtrippage-helpIcon:hover {
     cursor: pointer;
 }
+
 
 
 @media only screen and (min-device-width: 5px) and (max-device-width: 420px) {
@@ -21,5 +44,15 @@
         box-shadow: 5px 5px 20px 15px;
         border:2px solid black;
         border-radius: 30px !important;
+    }
+    .CreateTripPage-SpinnerContainer {
+        left:30%;
+        bottom:10%;
+    }
+    #createtrippage-loadingText {
+        width:100%;
+        border-radius: 15px;
+        right:0px;
+        bottom:-100px;
     }
 }

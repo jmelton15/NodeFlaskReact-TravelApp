@@ -1,5 +1,5 @@
 import {useHistory} from "react-router-dom";
-
+import {v4 as uuid} from "uuid";
 
 const GoToPage = () => {
     const history = useHistory();
@@ -39,9 +39,19 @@ const hasValue = (arrayOfObjects,key,value) => {
     return count > 0 ? true : false;
 }
 
+const iterateOverPlaces = (markerData) => {
+    let placesArr = [];
+    for(let place in markerData) {
+        markerData[place].forEach((location) => {
+            placesArr.push(location);
+        })
+    }
+    return placesArr;
+  }
+
 // const getAvatarUrl = (userId,filename,token) => {
 //     return `http://localhost:3001/users/${userId}/uploads/${filename}/${token}`;
 // }
 
-export {GoToPage,GetFromLocalStorage,filterData,hasValue};
+export {GoToPage,GetFromLocalStorage,filterData,hasValue,iterateOverPlaces};
 

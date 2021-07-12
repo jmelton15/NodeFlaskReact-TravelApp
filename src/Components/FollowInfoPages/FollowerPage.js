@@ -1,13 +1,13 @@
 import "./FollowerPage.css";
 import ConnectionCard from "../AddConnections/ConnectionCard";
 import { Redirect } from "react-router-dom";
-import GetScreenSize from '../../helpers/GetScreenSize';
+import GetScreenWidth from '../../helpers/GetScreenWidth';
 
 const FollowerPage = ({user,token}) => {
     if(!token || !user) {
         return <Redirect to="/"></Redirect>
     }
-    const [screenWidth] = GetScreenSize();
+    const [screenWidth] = GetScreenWidth();
     
     return (
         <div className={screenWidth > 600 ? "FollowerPage-ConnectionsListContainer container" : "FollowerPage-ConnectionsListContainer px-3"}>
