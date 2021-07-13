@@ -14,7 +14,7 @@ const HomePage = ({user,token}) => {
     if(token) {
         return (
             <div className="HomePage-HeaderContainer">
-                <h1 className="HomePage-LoggedInHeader" id="HomePage-ButtonGroup">Welcome Back, {user.username.toUpperCase()}</h1>
+                <h1 className="HomePage-LoggedInHeader" id="HomePage-ButtonGroup">Welcome, {user.username.toUpperCase()}</h1>
             </div>
         )
     }
