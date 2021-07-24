@@ -35,7 +35,10 @@ The concept behind my application is to create a social community for anyone tha
 Despite being up and running, this application will continue to be worked on. Any feedback, tips, ideas, or even bugs that you may find while trying it out,
 please let me know!
 
-QUICK NOTE TO USERS - > there is a good chance that I will have to take my app offline for a period of time as I work to try and find ways to afford the costs of running it fulltime.
+QUICK NOTE TO USERS - > there is a good chance that I will have to take my app offline for a period of time as I work to try and find ways to afford the costs of running it fulltime. 
+
+### LINK TO SITE
+ If the site is still live, it can be found here @  [Capstone #2 - DTRI](https://jmelton.dev:8000)
 
 ### Future Plans
  Future plans involve:
